@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css">
   <title>FormApp</title>
+
+  <link rel="manifest" href="manifest.json">
 </head>
 
 <!-- 界面 -->
@@ -52,6 +54,10 @@
 
   <!-- 以下是 Javascript, 來處理輸入 -->
   <script>
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js')
+    }
 
     // Add 按鈕按下的時候...
     document.querySelector('#button').addEventListener('click', function(){
