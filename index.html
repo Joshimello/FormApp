@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html data-theme="light">
+
+<!-- 一些設定 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css">
+  <title>FormApp</title>
+</head>
+
+<!-- 界面 -->
+<body class="container">
+  
+  <br><br>
+  <span>
+    Form App Demo:
+  </span>
+  <br><br>
+
+  <div class="grid">
+
+    <!-- 第一個輸入 -->
+    <div>
+      <lable>
+        Item
+      </lable>
+      <input type="text" id="item" />
+    </div>
+    
+    <!-- 第二個輸入 -->
+    <div>
+      <lable>
+        Amount
+      </lable>
+      <input type="number" id="amount" />
+    </div>
+  
+  </div>
+
+  <!-- Add 按鈕 -->
+  <button id="button">
+    Add
+  </button>
+
+  <!-- 情況 -->
+  <span id="status"></span>
+
+
+
+
+
+  <!-- 以下是 Javascript, 來處理輸入 -->
+  <script>
+
+    // Add 按鈕按下的時候...
+    document.querySelector('#button').addEventListener('click', function(){
+
+      // 取得 id 是 item 的輸入
+      let itemValue = document.querySelector('#item').value
+      // 取得 id 是 amount 的輸入
+      let amountValue = document.querySelector('#amount').value
+
+      // 拿著data, 模擬去google forms回答的動作
+      fetch(`https://docs.google.com/forms/d/e/1FAIpQLSesidBJ-QXVa66LUjZu-R0zPsBlyt46pvjbD0nccvInWg2YNQ/formResponse?usp=pp_url&entry.495753137=${itemValue}&entry.1326964809=${amountValue}`)
+
+      // 更新目前情況
+      document.querySelector('#status').innerHTML = `Added ${itemValue}: ${amountValue}`
+
+    })
+
+  </script>
+
+
+
+
+
+</body>
+</html>
